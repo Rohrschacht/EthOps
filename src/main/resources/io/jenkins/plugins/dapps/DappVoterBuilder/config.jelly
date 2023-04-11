@@ -1,0 +1,21 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:c="/lib/credentials">
+    <f:entry title="${%Credentials}" field="credentialsId">
+        <c:select />
+    </f:entry>
+    <f:block>
+        <h3>${%OperationType}</h3>
+    </f:block>
+    <f:radioBlock name="operationType" value="versionProposal" title="${%OperationVersion}" checked="true" inline="true">
+        <f:block>${%VersionProposalExplanation}</f:block>
+    </f:radioBlock>
+    <f:radioBlock name="operationType" value="deploymentProposal" title="${%OperationDeployment}" checked="${instance.operationType == 'deploymentProposal'}" inline="true">
+        <f:block>${%DeploymentProposalExplanation}</f:block>
+    </f:radioBlock>
+    <f:entry title="${%AcceptBox}" field="accept">
+        <f:checkbox />
+    </f:entry>
+    <f:entry title="${%ContractAddress}" field="contractAddress">
+        <f:textbox />
+    </f:entry>
+</j:jelly>
